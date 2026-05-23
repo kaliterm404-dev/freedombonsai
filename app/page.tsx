@@ -263,11 +263,11 @@ export default function Home() {
           style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.2)", borderRadius: "4px", padding: "0.4rem 0.7rem", color: "#a0a0a0", textDecoration: "none", backdropFilter: "blur(10px)", transition: "all 0.3s", display: "flex", alignItems: "center", gap: "0.4rem", position: "relative", overflow: "hidden" }}
         >
           <div style={{ position: "absolute", top: 0, left: "50%", transform: "translateX(-50%)", width: 0, height: 0, borderLeft: "60px solid transparent", borderRight: "60px solid transparent", borderTop: "8px solid rgba(255,255,255,0.15)" }} />
-          <span style={{ fontSize: "0.6rem", letterSpacing: "0.02em" }}>infofreedombonsai@gmail.com</span>
+          <span style={{ fontSize: "0.6rem", letterSpacing: "0.02em", textAlign: "center" }}>infofreedombonsai<br/>@gmail.com</span>
         </a>
         <button
           onClick={() => setLang(lang === "it" ? "en" : "it")}
-          style={{ background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)", borderRadius: "8px", padding: "0.5rem 0.8rem", cursor: "pointer", fontSize: "1.5rem", backdropFilter: "blur(10px)", transition: "all 0.3s" }}
+          style={{ background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)", borderRadius: "8px", padding: "0.4rem 0.7rem", cursor: "pointer", fontSize: "1.3rem", backdropFilter: "blur(10px)", transition: "all 0.3s" }}
           title={lang === "it" ? "Switch to English" : "Passa all'italiano"}
         >
           {lang === "it" ? "🇺🇸" : "🇮🇹"}
