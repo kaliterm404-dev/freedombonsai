@@ -219,7 +219,13 @@ function ParticleBackground() {
 export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
   const [lang, setLang] = useState<"it" | "en">("it");
+  const [cookieAccepted, setCookieAccepted] = useState(true);
   const t = texts[lang];
+
+  useEffect(() => {
+    const accepted = localStorage.getItem("gdpr-accepted");
+    if (!accepted) setCookieAccepted(false);
+  }, []);
 
   useEffect(() => {
     if (!heroRef.current) return;
@@ -245,14 +251,40 @@ export default function Home() {
     <>
       <ParticleBackground />
 
-      {/* LANGUAGE TOGGLE */}
-      <button
-        onClick={() => setLang(lang === "it" ? "en" : "it")}
-        style={{ position: "fixed", top: "1.5rem", right: "1.5rem", zIndex: 100, background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)", borderRadius: "8px", padding: "0.5rem 0.8rem", cursor: "pointer", fontSize: "1.5rem", backdropFilter: "blur(10px)", transition: "all 0.3s" }}
-        title={lang === "it" ? "Switch to English" : "Passa all'italiano"}
-      >
-        {lang === "it" ? "🇺🇸" : "🇮🇹"}
-      </button>
+      {/* TOP BAR */}
+      <div style={{ position: "fixed", top: "1rem", right: "1.5rem", zIndex: 100, display: "flex", gap: "0.5rem", alignItems: "center" }}>
+        <a
+          href="mailto:infofreedombonsai@gmail.com"
+          style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.2)", borderRadius: "4px", padding: "0.4rem 0.7rem", color: "#a0a0a0", textDecoration: "none", backdropFilter: "blur(10px)", transition: "all 0.3s", display: "flex", alignItems: "center", gap: "0.4rem", position: "relative", overflow: "hidden" }}
+        >
+          <div style={{ position: "absolute", top: 0, left: "50%", transform: "translateX(-50%)", width: 0, height: 0, borderLeft: "60px solid transparent", borderRight: "60px solid transparent", borderTop: "8px solid rgba(255,255,255,0.15)" }} />
+          <span style={{ fontSize: "0.6rem", letterSpacing: "0.02em" }}>infofreedombonsai@gmail.com</span>
+        </a>
+        <button
+          onClick={() => setLang(lang === "it" ? "en" : "it")}
+          style={{ background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)", borderRadius: "8px", padding: "0.5rem 0.8rem", cursor: "pointer", fontSize: "1.5rem", backdropFilter: "blur(10px)", transition: "all 0.3s" }}
+          title={lang === "it" ? "Switch to English" : "Passa all'italiano"}
+        >
+          {lang === "it" ? "🇺🇸" : "🇮🇹"}
+        </button>
+      </div>
+
+      {/* GDPR BANNER */}
+      {!cookieAccepted && (
+        <div style={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 200, background: "rgba(17,17,17,0.95)", borderTop: "1px solid rgba(255,255,255,0.1)", padding: "1rem 2rem", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "1rem", backdropFilter: "blur(10px)" }}>
+          <p style={{ color: "#a0a0a0", fontSize: "0.85rem", maxWidth: "800px", margin: 0 }}>
+            {lang === "it"
+              ? "Questo sito non utilizza cookie di profilazione. Utilizziamo solo cookie tecnici necessari al funzionamento del sito."
+              : "This website does not use profiling cookies. We only use technical cookies necessary for the site to function."}
+          </p>
+          <button
+            onClick={() => { localStorage.setItem("gdpr-accepted", "true"); setCookieAccepted(true); }}
+            style={{ background: "#4a8c3f", color: "#fff", border: "none", borderRadius: "6px", padding: "0.5rem 1.5rem", cursor: "pointer", fontSize: "0.85rem", fontWeight: 600, whiteSpace: "nowrap" }}
+          >
+            {lang === "it" ? "Ho capito" : "Got it"}
+          </button>
+        </div>
+      )}
 
       {/* HERO */}
       <div ref={heroRef} style={{ minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "2rem", position: "relative" }}>
