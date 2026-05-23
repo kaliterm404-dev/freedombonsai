@@ -377,7 +377,7 @@ export default function Home() {
           <p className="fade-up" style={{ color: "#ffffff", fontSize: "1.2rem", lineHeight: 1.8, marginBottom: "3rem", fontWeight: 600 }}>
             {t.support3}
           </p>
-          <a className="fade-up" href="#" style={{ display: "inline-block", padding: "1rem 3rem", background: "#4a8c3f", color: "#ffffff", fontSize: "1.1rem", fontWeight: 600, borderRadius: "50px", textDecoration: "none", transition: "all 0.3s" }}>
+          <a className="fade-up" href="/dona" style={{ display: "inline-block", padding: "1rem 3rem", background: "#4a8c3f", color: "#ffffff", fontSize: "1.1rem", fontWeight: 600, borderRadius: "50px", textDecoration: "none", transition: "all 0.3s" }}>
             {t.supportBtn}
           </a>
         </div>
@@ -385,7 +385,10 @@ export default function Home() {
 
       {/* FOOTER */}
       <footer style={{ padding: "3rem 2rem", borderTop: "1px solid rgba(255,255,255,0.1)", textAlign: "center" }}>
-        <div style={{ fontFamily: "var(--font-serif)", fontSize: "1.3rem", marginBottom: "1rem" }}>
+        <div
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          style={{ fontFamily: "var(--font-serif)", fontSize: "1.3rem", marginBottom: "1rem", cursor: "pointer", transition: "opacity 0.3s" }}
+        >
           <span style={{ color: "#6abf5e" }}>Freedom</span>Bonsai
         </div>
         <p style={{ color: "#a0a0a0", fontSize: "0.9rem" }}>
