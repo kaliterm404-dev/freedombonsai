@@ -51,7 +51,7 @@ export default function Dona() {
 
   const handleDonate = () => {
     if (!selected) return;
-    const paypalUrl = `https://www.paypal.com/donate/?business=infofreedombonsai@gmail.com&amount=${selected}&currency_code=EUR&item_name=FreedomBonsai+-+Adotta+un+bonsai`;
+    const paypalUrl = `https://paypal.me/freedombonsai/${selected}EUR`;
     window.open(paypalUrl, "_blank");
   };
 

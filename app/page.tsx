@@ -220,11 +220,16 @@ export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
   const [lang, setLang] = useState<"it" | "en">("it");
   const [cookieAccepted, setCookieAccepted] = useState(true);
+  const [viewCount, setViewCount] = useState<number | null>(null);
   const t = texts[lang];
 
   useEffect(() => {
     const accepted = localStorage.getItem("gdpr-accepted");
     if (!accepted) setCookieAccepted(false);
+    fetch("/api/views", { method: "POST" })
+      .then((r) => r.json())
+      .then((d) => setViewCount(d.count))
+      .catch(() => {});
   }, []);
 
   useEffect(() => {
@@ -311,13 +316,11 @@ export default function Home() {
 
       {/* CITAZIONE */}
       <AnimatedSection id="citazione" className="" >
-        <div style={{ background: "#111111", padding: "4rem 2rem", textAlign: "center" }}>
-          <div className="fade-up" style={{ color: "#4a8c3f", fontSize: "3rem", fontFamily: "serif", marginBottom: "1rem" }}>&ldquo;</div>
-          <blockquote className="fade-up" style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.2rem, 2.5vw, 2rem)", fontStyle: "italic", lineHeight: 1.6, color: "#f0f0f0", maxWidth: "1000px", margin: "0 auto" }}>
-            {t.quote}
+        <div style={{ padding: "4rem 2rem", textAlign: "center" }}>
+          <blockquote className="fade-up" style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1rem, 1.8vw, 1.5rem)", fontStyle: "italic", lineHeight: 1.6, color: "#f0f0f0", maxWidth: "1000px", margin: "0 auto", whiteSpace: "nowrap" }}>
+            <span style={{ color: "#4a8c3f", fontSize: "3rem", fontFamily: "serif", verticalAlign: "middle" }}>&ldquo;</span> {t.quote} <span style={{ color: "#4a8c3f", fontSize: "3rem", fontFamily: "serif", verticalAlign: "middle" }}>&rdquo;</span>
           </blockquote>
-          <div className="fade-up" style={{ color: "#4a8c3f", fontSize: "3rem", fontFamily: "serif", marginTop: "1rem" }}>&rdquo;</div>
-          <p className="fade-up" style={{ marginTop: "1rem", color: "#a0a0a0", fontSize: "1rem" }}>
+          <p className="fade-up" style={{ marginTop: "0.3rem", color: "#a0a0a0", fontSize: "1rem" }}>
             {t.quoteAuthor}
           </p>
         </div>
@@ -325,7 +328,7 @@ export default function Home() {
 
       {/* THE MISSION */}
       <AnimatedSection id="mission">
-        <div style={{ padding: "5rem 2rem", textAlign: "center", maxWidth: "1100px", margin: "0 auto" }}>
+        <div style={{ padding: "2rem 2rem 5rem", textAlign: "center", maxWidth: "1100px", margin: "0 auto" }}>
           <h2 className="fade-up" style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(2rem, 4vw, 3.5rem)", fontWeight: 700, marginBottom: "3rem" }}>
             {t.missionTitle} <span style={{ color: "#6abf5e" }}>{t.missionGreen}</span>
           </h2>
@@ -343,7 +346,7 @@ export default function Home() {
 
       {/* COME È INIZIATA */}
       <AnimatedSection id="storia">
-        <div style={{ padding: "5rem 2rem", textAlign: "center", maxWidth: "1100px", margin: "0 auto" }}>
+        <div style={{ padding: "2rem 2rem 5rem", textAlign: "center", maxWidth: "1100px", margin: "0 auto" }}>
           <h2 className="fade-up" style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(2rem, 4vw, 3.5rem)", fontWeight: 700, marginBottom: "3rem" }}>
             {t.storiaTitle} <span style={{ color: "#6abf5e" }}>{t.storiaGreen}</span>
           </h2>
@@ -362,12 +365,32 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
+      {/* FOTO TORTURA */}
+      <AnimatedSection id="foto-tortura">
+        <div style={{ padding: "1rem 2rem", maxWidth: "1100px", margin: "0 auto" }}>
+          <div className="fade-up" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "2rem", flexWrap: "wrap" }}>
+            <div style={{ position: "relative", width: "200px", height: "280px", borderRadius: "50%", overflow: "hidden", boxShadow: "0 0 40px 10px rgba(140,63,63,0.15)", flexShrink: 0 }}>
+              <Image src="/legatura.webp" alt="Bonsai legato con fascette" fill style={{ objectFit: "cover" }} />
+            </div>
+            <div style={{ position: "relative", width: "350px", height: "220px", borderRadius: "50%", overflow: "hidden", boxShadow: "0 0 40px 10px rgba(140,63,63,0.15)" }}>
+              <Image src="/filo.jpg" alt="Filo di rame avvolto sui rami" fill style={{ objectFit: "cover" }} />
+            </div>
+            <div style={{ position: "relative", width: "200px", height: "280px", borderRadius: "50%", overflow: "hidden", boxShadow: "0 0 40px 10px rgba(140,63,63,0.15)", flexShrink: 0 }}>
+              <Image src="/schermata.png" alt="Bonsai in mostra con costrizioni" fill style={{ objectFit: "cover" }} />
+            </div>
+          </div>
+        </div>
+      </AnimatedSection>
+
       {/* SUPPORTACI */}
       <AnimatedSection id="supporta">
         <div style={{ padding: "5rem 2rem", textAlign: "center", maxWidth: "1100px", margin: "0 auto" }}>
           <h2 className="fade-up" style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(2rem, 4vw, 3.5rem)", fontWeight: 700, marginBottom: "2rem" }}>
             {t.supportTitle} <span style={{ color: "#6abf5e" }}>{t.supportGreen}</span>
           </h2>
+          <p className="fade-up" style={{ color: "#a0a0a0", fontSize: "1rem", lineHeight: 1.6, marginBottom: "2rem", fontStyle: "italic" }}>
+            {t.footerText}
+          </p>
           <p className="fade-up" style={{ color: "#a0a0a0", fontSize: "1.1rem", lineHeight: 1.8, marginBottom: "1.5rem" }}>
             {t.support1}
           </p>
@@ -391,9 +414,11 @@ export default function Home() {
         >
           <span style={{ color: "#6abf5e" }}>Freedom</span>Bonsai
         </div>
-        <p style={{ color: "#a0a0a0", fontSize: "0.9rem" }}>
-          {t.footerText}
-        </p>
+        {viewCount !== null && (
+          <p style={{ color: "#555", fontSize: "0.8rem", marginTop: "0.5rem" }}>
+            🌿 {lang === "it" ? `${viewCount} visitatori hanno scoperto FreedomBonsai` : `${viewCount} visitors have discovered FreedomBonsai`}
+          </p>
+        )}
       </footer>
     </>
   );
