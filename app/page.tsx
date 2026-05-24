@@ -317,7 +317,7 @@ export default function Home() {
       {/* CITAZIONE */}
       <AnimatedSection id="citazione" className="" >
         <div style={{ padding: "4rem 2rem", textAlign: "center" }}>
-          <blockquote className="fade-up" style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1rem, 1.8vw, 1.5rem)", fontStyle: "italic", lineHeight: 1.6, color: "#f0f0f0", maxWidth: "1000px", margin: "0 auto", whiteSpace: "nowrap" }}>
+          <blockquote className="fade-up" style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(0.9rem, 1.8vw, 1.5rem)", fontStyle: "italic", lineHeight: 1.6, color: "#f0f0f0", maxWidth: "1000px", margin: "0 auto" }}>
             <span style={{ color: "#4a8c3f", fontSize: "3rem", fontFamily: "serif", verticalAlign: "middle" }}>&ldquo;</span> {t.quote} <span style={{ color: "#4a8c3f", fontSize: "3rem", fontFamily: "serif", verticalAlign: "middle" }}>&rdquo;</span>
           </blockquote>
           <p className="fade-up" style={{ marginTop: "0.3rem", color: "#a0a0a0", fontSize: "1rem" }}>
