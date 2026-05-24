@@ -30,6 +30,9 @@ export const metadata: Metadata = {
     title: "FreedomBonsai — Movimento di Liberazione",
     description: "Acquistiamo bonsai e li restituiamo alla terra. Adotta un bonsai.",
   },
+  verification: {
+    google: "7Y0_k7UFF7zb1nZFJYjpVFtozexRqVCdtTYMeqIExD8",
+  },
   robots: {
     index: true,
     follow: true,
