@@ -391,9 +391,6 @@ export default function Home() {
           <h2 className="fade-up" style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(2rem, 4vw, 3.5rem)", fontWeight: 700, marginBottom: "2rem" }}>
             {t.supportTitle} <span style={{ color: "#6abf5e" }}>{t.supportGreen}</span>
           </h2>
-          <p className="fade-up" style={{ color: "#a0a0a0", fontSize: "1rem", lineHeight: 1.6, marginBottom: "2rem", fontStyle: "italic" }}>
-            {t.footerText}
-          </p>
           <p className="fade-up" style={{ color: "#a0a0a0", fontSize: "1.1rem", lineHeight: 1.8, marginBottom: "1.5rem" }}>
             {t.support1}
           </p>
