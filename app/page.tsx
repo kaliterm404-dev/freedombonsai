@@ -29,9 +29,9 @@ const texts = {
     storia4: "Ogni legatura, ogni potatura non è altro che un simbolo di prevaricazione, un tentativo di piegare l'essenza di ciò che è selvaggio e libero, riducendolo ad un'ombra del suo vero potenziale.",
     supportTitle: "Supporta la",
     supportGreen: "libertà",
-    support1: "Abbiamo deciso di intraprendere una missione per ridare libertà a queste meravigliose creature della natura, piantandole in terra, dove potranno finalmente crescere secondo il loro destino.",
-    support2: "Ogni pianta verrà restituita alla sua vita naturale, vi terremo aggiornati con foto e racconti riguardanti la sua crescita, in modo che possiate seguire il suo cammino verso la libertà.",
-    support3: "Aiutami a liberare i bonsai, uno per uno, ed a trasformare un atto di possesso in un atto di amore per la vita.",
+    support1: "Con la tua donazione acquisteremo un bonsai dal valore corrispondente e lo pianteremo in terra, restituendogli la libertà di crescere senza costrizioni.",
+    support2: "Una volta piantato, riceverai via email la foto del tuo bonsai liberato, insieme a un numero identificativo unico che ti permetterà di seguirne la crescita nel tempo.",
+    support3: "Il costo medio di un bonsai è di €15. Se vuoi dedicarne uno interamente a te, scegli una donazione pari o superiore a quel valore. Ogni contributo, anche piccolo, si somma al fondo comune.",
     supportBtn: "Adotta un bonsai",
     footerText: "Ogni pianta che salverai, sarà un passo verso un mondo in cui la natura non è soggiogata, ma rispettata.",
   },
@@ -56,9 +56,9 @@ const texts = {
     storia4: "Every binding, every pruning is nothing but a symbol of domination, an attempt to bend the essence of what is wild and free, reducing it to a shadow of its true potential.",
     supportTitle: "Support",
     supportGreen: "freedom",
-    support1: "We have decided to embark on a mission to give freedom back to these wonderful creatures of nature, planting them in the ground, where they can finally grow according to their destiny.",
-    support2: "Every plant will be returned to its natural life. We will keep you updated with photos and stories about its growth, so you can follow its journey toward freedom.",
-    support3: "Help me free bonsai, one by one, and transform an act of possession into an act of love for life.",
+    support1: "With your donation, we will purchase a bonsai of corresponding value and plant it in the ground, giving it back the freedom to grow without constraints.",
+    support2: "Once planted, you will receive an email with a photo of your freed bonsai, along with a unique identification number to follow its growth over time.",
+    support3: "The average cost of a bonsai is €15. If you want to dedicate one entirely to you, choose a donation equal to or greater than that value. Every contribution, even small, adds to the common fund.",
     supportBtn: "Adopt a bonsai",
     footerText: "Every plant you save will be a step toward a world where nature is not subjugated, but respected.",
   },
@@ -385,6 +385,9 @@ export default function Home() {
       {/* SUPPORTACI */}
       <AnimatedSection id="supporta">
         <div style={{ padding: "5rem 2rem", textAlign: "center", maxWidth: "1100px", margin: "0 auto" }}>
+          <div className="fade-up" style={{ position: "relative", width: "clamp(200px, 30vw, 300px)", height: "clamp(280px, 42vw, 420px)", margin: "0 auto 2rem", borderRadius: "50%", overflow: "hidden", boxShadow: "0 0 40px 15px rgba(74,140,63,0.15)" }}>
+            <Image src="/kali-bonsai.png" alt="Kali pianta un bonsai in terra" fill style={{ objectFit: "cover" }} />
+          </div>
           <h2 className="fade-up" style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(2rem, 4vw, 3.5rem)", fontWeight: 700, marginBottom: "2rem" }}>
             {t.supportTitle} <span style={{ color: "#6abf5e" }}>{t.supportGreen}</span>
           </h2>
@@ -403,6 +406,9 @@ export default function Home() {
           <a className="fade-up" href="/dona" style={{ display: "inline-block", padding: "1rem 3rem", background: "#4a8c3f", color: "#ffffff", fontSize: "1.1rem", fontWeight: 600, borderRadius: "50px", textDecoration: "none", transition: "all 0.3s" }}>
             {t.supportBtn}
           </a>
+          <p className="fade-up" style={{ color: "#555", fontSize: "0.8rem", lineHeight: 1.6, marginTop: "1.5rem", fontStyle: "italic" }}>
+            {t.footerText}
+          </p>
         </div>
       </AnimatedSection>
 
