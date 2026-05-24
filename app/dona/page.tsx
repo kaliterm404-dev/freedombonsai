@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import Link from "next/link";
+import ParticleBackground from "@/components/ParticleBackground";
 
 const texts = {
   it: {
@@ -93,8 +94,9 @@ export default function Dona() {
   const activeAmount = customAmount ? parseFloat(customAmount) > 0 : selected !== null;
 
   return (
-    <div ref={ref} style={{ minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "2rem", position: "relative", background: "#0a0a0a" }}>
-      <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at center, rgba(26,58,24,0.3) 0%, transparent 70%)" }} />
+    <>
+    <ParticleBackground />
+    <div ref={ref} style={{ minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "2rem", position: "relative", background: "transparent", zIndex: 1 }}>
 
       <button
         onClick={() => { const next = lang === "it" ? "en" : "it"; setLang(next); localStorage.setItem("fb-lang", next); }}
@@ -238,5 +240,6 @@ export default function Dona() {
         </Link>
       </div>
     </div>
+    </>
   );
 }

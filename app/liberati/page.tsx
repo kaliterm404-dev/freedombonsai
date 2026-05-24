@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import ParticleBackground from "@/components/ParticleBackground";
 
 const freedBonsai: { id: string; date: string; name: string; image: string }[] = [
   // Aggiungi qui i bonsai liberati via git:
@@ -39,8 +40,9 @@ export default function Liberati() {
   }, []);
 
   return (
-    <div style={{ minHeight: "100vh", background: "#0a0a0a", padding: "4rem 2rem", display: "flex", flexDirection: "column", alignItems: "center" }}>
-      <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at center, rgba(26,58,24,0.3) 0%, transparent 70%)", pointerEvents: "none" }} />
+    <>
+    <ParticleBackground />
+    <div style={{ minHeight: "100vh", background: "transparent", padding: "4rem 2rem", display: "flex", flexDirection: "column", alignItems: "center", position: "relative", zIndex: 1 }}>
 
       <button
         onClick={() => { const next = lang === "it" ? "en" : "it"; setLang(next); localStorage.setItem("fb-lang", next); }}
@@ -79,5 +81,6 @@ export default function Liberati() {
         {t.back}
       </Link>
     </div>
+    </>
   );
 }
