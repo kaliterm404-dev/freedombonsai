@@ -25,11 +25,13 @@ export const metadata: Metadata = {
     siteName: "FreedomBonsai",
     type: "website",
     locale: "it_IT",
+    images: [{ url: "https://freedombonsai.com/bonsai-hero.png", width: 1024, height: 1024, alt: "FreedomBonsai — Bonsai che si libera dalle catene dorate" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "FreedomBonsai — Movimento di Liberazione",
     description: "Acquistiamo bonsai e li restituiamo alla terra. Adotta un bonsai.",
+    images: ["https://freedombonsai.com/bonsai-hero.png"],
   },
   verification: {
     google: "7Y0_k7UFF7zb1nZFJYjpVFtozexRqVCdtTYMeqIExD8",
